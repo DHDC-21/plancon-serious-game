@@ -1,4 +1,4 @@
-# PLANCON GAME QUIZ
+# MISSÃO PLANCON
 
 **Aluno:** Douglas Henrique Dionysio Costa | Engenharia de Computação (3º periodo)
 
