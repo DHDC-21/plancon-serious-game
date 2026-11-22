@@ -8,13 +8,10 @@
 script = ExtResource("2_htlvg")
 teste = ExtResource("3_62k0l")
 
-[node name="EnunciadoContainer" parent="MarginContainer/Jogo/EnunciadoAlternativas" parent_id_path=PackedInt32Array(9809959) index="0" unique_id=219498813]
-size_flags_vertical = 4
+[node name="EnunciadoAlternativas" parent="MarginContainer/Jogo" parent_id_path=PackedInt32Array(2032281320) index="0" unique_id=9809959]
+size_flags_stretch_ratio = 2.6
 
-[node name="MidiaContainer" parent="MarginContainer/Jogo/EnunciadoAlternativas/EnunciadoContainer" index="1" unique_id=1292241263]
-size_flags_vertical = 3
-
-[node name="Alternativas" parent="MarginContainer/Jogo/EnunciadoAlternativas" parent_id_path=PackedInt32Array(9809959) index="1" unique_id=1495187969]
+[node name="Alternativas" parent="MarginContainer/Jogo/EnunciadoAlternativas" index="1" unique_id=1495187969]
 size_flags_vertical = 4
 
 [node name="CheckBox0" type="CheckBox" parent="MarginContainer/Jogo/EnunciadoAlternativas/Alternativas" index="0" unique_id=200186312]
@@ -71,6 +68,3 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 offset_transform_enabled = true
 text = "lorem ipsum"
-
-[node name="FeedbackPanel" parent="MarginContainer/Jogo" parent_id_path=PackedInt32Array(2032281320) index="1" unique_id=800025278]
-visible = false

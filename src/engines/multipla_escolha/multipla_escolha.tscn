@@ -7,36 +7,39 @@
 script = ExtResource("2_i3bb1")
 teste = null
 
-[node name="VBoxContainer" parent="MarginContainer" parent_id_path=PackedInt32Array(1736262388) index="0" unique_id=2032281320]
-theme_override_constants/separation = 32
+[node name="MarginContainer" parent="." index="2" unique_id=754744183]
+propagate_maximum_size = false
+theme_override_constants/margin_top = 64
 
-[node name="MidiaContainer" parent="MarginContainer/VBoxContainer/EnunciadoContainer" parent_id_path=PackedInt32Array(219498813) index="1" unique_id=1292241263]
-unique_name_in_owner = true
+[node name="Jogo" parent="MarginContainer" index="0" unique_id=2032281320]
+offset_transform_enabled = true
+offset_transform_visual_only = false
+alignment = 2
 
-[node name="Alternativas" parent="MarginContainer/VBoxContainer" index="1" unique_id=1495187969]
-theme_override_constants/separation = 32
+[node name="EnunciadoAlternativas" parent="MarginContainer/Jogo" index="0" unique_id=9809959]
+custom_maximum_size = Vector2(-1, 1000)
 
-[node name="Button0" type="Button" parent="MarginContainer/VBoxContainer/Alternativas" index="0" unique_id=1220210902]
-custom_minimum_size = Vector2(0, 100)
-propagate_maximum_size = true
+[node name="Alternativas" parent="MarginContainer/Jogo/EnunciadoAlternativas" index="1" unique_id=1495187969]
+clip_contents = true
+size_flags_vertical = 8
+theme_override_constants/separation = 46
+
+[node name="Button0" type="Button" parent="MarginContainer/Jogo/EnunciadoAlternativas/Alternativas" index="0" unique_id=280875443]
 layout_mode = 2
+text = "Alternativa A"
 
-[node name="Button1" type="Button" parent="MarginContainer/VBoxContainer/Alternativas" index="1" unique_id=13063580]
-custom_minimum_size = Vector2(0, 100)
-propagate_maximum_size = true
+[node name="Button1" type="Button" parent="MarginContainer/Jogo/EnunciadoAlternativas/Alternativas" index="1" unique_id=116141618]
 layout_mode = 2
+text = "Alternativa B"
 
-[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer/Alternativas" index="2" unique_id=1993668990]
-custom_minimum_size = Vector2(0, 100)
-propagate_maximum_size = true
+[node name="Button2" type="Button" parent="MarginContainer/Jogo/EnunciadoAlternativas/Alternativas" index="2" unique_id=1368690248]
 layout_mode = 2
+text = "Alternativa C"
 
-[node name="Button3" type="Button" parent="MarginContainer/VBoxContainer/Alternativas" index="3" unique_id=1149384291]
-custom_minimum_size = Vector2(0, 100)
-propagate_maximum_size = true
+[node name="Button3" type="Button" parent="MarginContainer/Jogo/EnunciadoAlternativas/Alternativas" index="3" unique_id=2050976571]
 layout_mode = 2
+text = "Alternativa D"
 
-[node name="Button4" type="Button" parent="MarginContainer/VBoxContainer/Alternativas" index="4" unique_id=403566577]
-custom_minimum_size = Vector2(0, 100)
-propagate_maximum_size = true
+[node name="Button4" type="Button" parent="MarginContainer/Jogo/EnunciadoAlternativas/Alternativas" index="4" unique_id=1310513926]
 layout_mode = 2
+text = "Alternativa E"

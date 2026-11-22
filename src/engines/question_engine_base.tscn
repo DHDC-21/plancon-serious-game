@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cfbaj6oxyo5fn"]
 
+[ext_resource type="Texture2D" uid="uid://byiype3n87ifo" path="res://assets/images/Univesp/Univesp_logo_png_rgb.png" id="2_d5juc"]
 [ext_resource type="Script" uid="uid://cic4h34gela7i" path="res://src/engines/question_engine_base.gd" id="2_wciwr"]
 
 [node name="QuestionEngineBase" type="Control" unique_id=1185426554]
@@ -56,16 +57,19 @@ size_flags_horizontal = 3
 
 [node name="Texto" type="RichTextLabel" parent="MarginContainer/Jogo/EnunciadoAlternativas/EnunciadoContainer" unique_id=257742114]
 unique_name_in_owner = true
+propagate_maximum_size = true
+clip_contents = false
 layout_mode = 2
 theme_type_variation = &"Enunciado"
-text = "Texto"
+text = "Texto do Enunciado: Aqui será renderizado o texto da pergunta, caso não tenha uma imagem ele ocupara o espaço inteiro."
 fit_content = true
 horizontal_alignment = 3
 
 [node name="MidiaContainer" type="Panel" parent="MarginContainer/Jogo/EnunciadoAlternativas/EnunciadoContainer" unique_id=1292241263]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 600)
+custom_maximum_size = Vector2(-1, 600)
 layout_mode = 2
+size_flags_vertical = 3
 theme_type_variation = &"MidiaContainer"
 
 [node name="Imagem" type="TextureRect" parent="MarginContainer/Jogo/EnunciadoAlternativas/EnunciadoContainer/MidiaContainer" unique_id=712114561]
@@ -76,6 +80,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("2_d5juc")
+expand_mode = 2
 
 [node name="Video" type="VideoStreamPlayer" parent="MarginContainer/Jogo/EnunciadoAlternativas/EnunciadoContainer/MidiaContainer" unique_id=746820237]
 unique_name_in_owner = true
@@ -93,12 +99,12 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 8
 theme_override_constants/separation = 24
 
 [node name="FeedbackPanel" type="PanelContainer" parent="MarginContainer/Jogo" unique_id=800025278]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 200)
+custom_minimum_size = Vector2(0, 128)
+custom_maximum_size = Vector2(-1, 256)
 layout_mode = 2
 
 [node name="FeedbackLabel" type="RichTextLabel" parent="MarginContainer/Jogo/FeedbackPanel" unique_id=120411404]
@@ -111,6 +117,6 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(400, 100)
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_vertical = 8
 theme_type_variation = &"BotaoConfirmar"
 text = "Confirmar"

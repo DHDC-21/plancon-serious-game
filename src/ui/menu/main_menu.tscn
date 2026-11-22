@@ -82,7 +82,14 @@ size_flags_vertical = 3
 theme_type_variation = &"MainMenuButton"
 text = "Créditos"
 
+[node name="BtnOpcoes" type="Button" parent="Margem/HBoxContainer/VBoxContainer/Opcoes" unique_id=2020328967]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+theme_type_variation = &"MainMenuButton"
+text = "Opções"
+
 [node name="BtnSair" type="Button" parent="Margem/HBoxContainer/VBoxContainer/Opcoes" unique_id=553306780]
+visible = false
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 size_flags_vertical = 3
