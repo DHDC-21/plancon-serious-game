@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="VerdadeiroOuFalsoModel" format=3 uid="uid://c6ots2xbudhcy"]
+
+[ext_resource type="Script" uid="uid://crc5ya131j2ya" path="res://src/resources/questions/model/verdadeiro_ou_falso.gd" id="1_r65gm"]
+
+[resource]
+script = ExtResource("1_r65gm")
+resposta_correta = true
+texto = "Uma comunidade com infraestrutura precária e pouca capacidade de resposta tende a ser mais vulnerável aos desastres."
+metadata/_custom_type_script = "uid://crc5ya131j2ya"

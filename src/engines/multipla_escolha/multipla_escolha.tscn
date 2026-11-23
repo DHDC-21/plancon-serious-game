@@ -11,35 +11,42 @@ teste = null
 propagate_maximum_size = false
 theme_override_constants/margin_top = 64
 
-[node name="Jogo" parent="MarginContainer" index="0" unique_id=2032281320]
+[node name="Jogo" parent="MarginContainer" index="0" unique_id=543701088]
 offset_transform_enabled = true
 offset_transform_visual_only = false
-alignment = 2
 
-[node name="EnunciadoAlternativas" parent="MarginContainer/Jogo" index="0" unique_id=9809959]
-custom_maximum_size = Vector2(-1, 1000)
+[node name="GridContainer" parent="MarginContainer/Jogo" index="0" unique_id=166267235]
+clip_contents = false
 
-[node name="Alternativas" parent="MarginContainer/Jogo/EnunciadoAlternativas" index="1" unique_id=1495187969]
-clip_contents = true
-size_flags_vertical = 8
-theme_override_constants/separation = 46
+[node name="Alternativas" parent="MarginContainer/Jogo/GridContainer" index="1" unique_id=629126873]
+size_flags_vertical = 3
 
-[node name="Button0" type="Button" parent="MarginContainer/Jogo/EnunciadoAlternativas/Alternativas" index="0" unique_id=280875443]
+[node name="Alternativa0" type="Button" parent="MarginContainer/Jogo/GridContainer/Alternativas" index="0" unique_id=280875443]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 text = "Alternativa A"
 
-[node name="Button1" type="Button" parent="MarginContainer/Jogo/EnunciadoAlternativas/Alternativas" index="1" unique_id=116141618]
+[node name="Alternativa1" type="Button" parent="MarginContainer/Jogo/GridContainer/Alternativas" index="1" unique_id=116141618]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 text = "Alternativa B"
 
-[node name="Button2" type="Button" parent="MarginContainer/Jogo/EnunciadoAlternativas/Alternativas" index="2" unique_id=1368690248]
+[node name="Alternativa2" type="Button" parent="MarginContainer/Jogo/GridContainer/Alternativas" index="2" unique_id=1368690248]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 text = "Alternativa C"
 
-[node name="Button3" type="Button" parent="MarginContainer/Jogo/EnunciadoAlternativas/Alternativas" index="3" unique_id=2050976571]
+[node name="Alternativa3" type="Button" parent="MarginContainer/Jogo/GridContainer/Alternativas" index="3" unique_id=2050976571]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 text = "Alternativa D"
 
-[node name="Button4" type="Button" parent="MarginContainer/Jogo/EnunciadoAlternativas/Alternativas" index="4" unique_id=1310513926]
+[node name="Alternativa4" type="Button" parent="MarginContainer/Jogo/GridContainer/Alternativas" index="4" unique_id=1310513926]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 text = "Alternativa E"

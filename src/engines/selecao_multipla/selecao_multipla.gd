@@ -1,16 +1,25 @@
 extends QuestionEngineBase
 class_name SelecaoMultiplaEngine
 
+
+
 var checkbox: Array[Button] = []
 var indices_respostas_selecionadas: Array[int] = []
 
+
+
 @export_category("Teste")
 @export var teste: SelecaoMultiplaModel
+
+
 
 func _on_ready() -> void:
 	if teste:
 		pergunta = teste
 
+
+
+# AVISO: Essa parteé complicada e precisa de muita atenção para ser manipulada
 func _construir_as_alternativas() -> void:
 	if pergunta == null or pergunta.alternativas.size() == 0:
 		push_error("A pergunta não possui alternativas definidas.")
@@ -53,17 +62,21 @@ func _construir_as_alternativas() -> void:
 			checkbox[i].button_pressed = false
 			checkbox[i].set_disabled(false)
 			checkbox[i].modulate = cor_normal
-			
+
 			# Limpa conexões antigas para evitar duplicidade ao reutilizar botões
 			for connection in checkbox[i].pressed.get_connections():
 				checkbox[i].pressed.disconnect(connection.callable)
-				
+
 			checkbox[i].pressed.connect(resposta_do_checkbox.bind(checkbox[i]))
 			checkbox[i].visible = true
 		else:
 			checkbox[i].visible = false
 
+
+
+
 func resposta_do_checkbox(check: Button) -> void:
+
 	if not _confirmar:
 		var indice = check.get_meta("indice_original")
 
@@ -74,5 +87,15 @@ func resposta_do_checkbox(check: Button) -> void:
 			indices_respostas_selecionadas.append(indice)
 			check.modulate = cor_selecao
 
+
+
+# Verifica se a resposta esta correta
 func _checar_resposta() -> bool:
-	return 0
+	if indices_respostas_selecionadas.size() != pergunta.alternativas_corretas.size():
+		return false
+
+	for indice_correto in pergunta.alternativas_corretas:
+		if not indices_respostas_selecionadas.has(indice_correto):
+			return false
+
+	return true

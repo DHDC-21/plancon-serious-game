@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="VerdadeiroOuFalsoModel" format=3 uid="uid://bg6noe8nbnfgj"]
+
+[ext_resource type="Script" uid="uid://crc5ya131j2ya" path="res://src/resources/questions/model/verdadeiro_ou_falso.gd" id="1_u0i5w"]
+
+[resource]
+script = ExtResource("1_u0i5w")
+texto = "O GT deve ser multidisciplinar e contar com representantes de diferentes órgãos e instituições que possam contribuir para a gestão de riscos e desastres."
+metadata/_custom_type_script = "uid://crc5ya131j2ya"

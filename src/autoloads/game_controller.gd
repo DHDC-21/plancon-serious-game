@@ -3,14 +3,19 @@ extends Node
 var index_atual: int = 0
 var fases: Array[QuestionModel] = []
 
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
 
 
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
+
 
 
 func start_game(lista_de_fases: Array[QuestionModel]) -> void:
@@ -21,6 +26,8 @@ func start_game(lista_de_fases: Array[QuestionModel]) -> void:
 	index_atual = 0
 
 	carregar_pergunta_atual()
+
+
 
 func carregar_pergunta_atual() -> void:
 	print("Carregando pergunta atual: ", index_atual)
@@ -36,7 +43,7 @@ func carregar_pergunta_atual() -> void:
 
 
 	elif pergunta_atual is VerdadeiroOuFalsoModel:
-		caminho_da_engine = "res://src/engines/verdadeiro_falso/verdadeiro_falso.tscn"
+		caminho_da_engine = "res://src/engines/verdadeiro_ou_falso/verdadeiro_ou_falso.tscn"
 
 	else:
 		print("Erro: Tipo de pergunta não suportado: ", pergunta_atual)
@@ -44,6 +51,8 @@ func carregar_pergunta_atual() -> void:
 
 	print("Carregando engine: ", caminho_da_engine)
 	get_tree().change_scene_to_file(caminho_da_engine)
+
+
 
 func carregar_proxima_pergunta() -> void:
 	index_atual += 1

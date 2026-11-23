@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://e3j8av68i2l0"]
+
+[ext_resource type="PackedScene" uid="uid://cfbaj6oxyo5fn" path="res://src/engines/question_engine_base.tscn" id="1_gmtin"]
+[ext_resource type="Script" uid="uid://ddih4xhwbj7r8" path="res://src/engines/verdadeiro_ou_falso/verdadeiro_ou_falso.gd" id="2_nagef"]
+
+[node name="VerdadeiroOuFalso" unique_id=1185426554 instance=ExtResource("1_gmtin")]
+script = ExtResource("2_nagef")
+teste = null
+
+[node name="GridContainer" parent="MarginContainer/Jogo" parent_id_path=PackedInt32Array(543701088) index="0" unique_id=166267235]
+columns = 1
+
+[node name="MidiaContainer" parent="MarginContainer/Jogo/GridContainer/EnunciadoContainer" parent_id_path=PackedInt32Array(219498813) index="1" unique_id=1292241263]
+visible = false
+
+[node name="Alternativas" parent="MarginContainer/Jogo/GridContainer" index="1" unique_id=629126873]
+size_flags_horizontal = 6
+size_flags_vertical = 6
+columns = 2
+
+[node name="BotaoVerdadeiro" type="Button" parent="MarginContainer/Jogo/GridContainer/Alternativas" index="0" unique_id=339546752]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(560, 180)
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"BotaoVerdadeiro"
+text = "VERDADEIRO"
+
+[node name="BotaoFalso" type="Button" parent="MarginContainer/Jogo/GridContainer/Alternativas" index="1" unique_id=1301898082]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(560, 180)
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"BotaoFalso"
+toggle_mode = true
+text = "FALSO"

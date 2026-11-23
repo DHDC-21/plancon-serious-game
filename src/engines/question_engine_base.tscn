@@ -2,6 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://byiype3n87ifo" path="res://assets/images/Univesp/Univesp_logo_png_rgb.png" id="2_d5juc"]
 [ext_resource type="Script" uid="uid://cic4h34gela7i" path="res://src/engines/question_engine_base.gd" id="2_wciwr"]
+[ext_resource type="AudioStream" uid="uid://dh5ro6uwwsuvf" path="res://assets/audio/sfx_correct/chrisiex1-correct-156911.mp3" id="3_tik6b"]
+[ext_resource type="AudioStream" uid="uid://c6kc5fgltariq" path="res://assets/audio/sfx_correct/mixkit-positive-notification-951.wav" id="4_j106q"]
 
 [node name="QuestionEngineBase" type="Control" unique_id=1185426554]
 layout_mode = 3
@@ -19,7 +21,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_type_variation = &"EngineBackground"
+theme_type_variation = &"FundoEngine"
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=706596496]
 layout_mode = 1
@@ -40,22 +42,26 @@ grow_vertical = 2
 theme_override_constants/margin_left = 128
 theme_override_constants/margin_right = 128
 
-[node name="Jogo" type="VBoxContainer" parent="MarginContainer" unique_id=2032281320]
+[node name="Jogo" type="VBoxContainer" parent="MarginContainer" unique_id=543701088]
 propagate_maximum_size = false
 layout_mode = 2
 theme_override_constants/separation = 32
+accessibility_region = true
 
-[node name="EnunciadoAlternativas" type="HBoxContainer" parent="MarginContainer/Jogo" unique_id=9809959]
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/Jogo" unique_id=166267235]
 propagate_maximum_size = false
+clip_contents = true
 layout_mode = 2
 size_flags_vertical = 3
+columns = 2
 
-[node name="EnunciadoContainer" type="VBoxContainer" parent="MarginContainer/Jogo/EnunciadoAlternativas" unique_id=219498813]
+[node name="EnunciadoContainer" type="VBoxContainer" parent="MarginContainer/Jogo/GridContainer" unique_id=219498813]
 propagate_maximum_size = false
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="Texto" type="RichTextLabel" parent="MarginContainer/Jogo/EnunciadoAlternativas/EnunciadoContainer" unique_id=257742114]
+[node name="Texto" type="RichTextLabel" parent="MarginContainer/Jogo/GridContainer/EnunciadoContainer" unique_id=257742114]
 unique_name_in_owner = true
 propagate_maximum_size = true
 clip_contents = false
@@ -65,14 +71,14 @@ text = "Texto do Enunciado: Aqui será renderizado o texto da pergunta, caso nã
 fit_content = true
 horizontal_alignment = 3
 
-[node name="MidiaContainer" type="Panel" parent="MarginContainer/Jogo/EnunciadoAlternativas/EnunciadoContainer" unique_id=1292241263]
+[node name="MidiaContainer" type="Panel" parent="MarginContainer/Jogo/GridContainer/EnunciadoContainer" unique_id=1292241263]
 unique_name_in_owner = true
 custom_maximum_size = Vector2(-1, 600)
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"MidiaContainer"
 
-[node name="Imagem" type="TextureRect" parent="MarginContainer/Jogo/EnunciadoAlternativas/EnunciadoContainer/MidiaContainer" unique_id=712114561]
+[node name="Imagem" type="TextureRect" parent="MarginContainer/Jogo/GridContainer/EnunciadoContainer/MidiaContainer" unique_id=712114561]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -83,7 +89,7 @@ grow_vertical = 2
 texture = ExtResource("2_d5juc")
 expand_mode = 2
 
-[node name="Video" type="VideoStreamPlayer" parent="MarginContainer/Jogo/EnunciadoAlternativas/EnunciadoContainer/MidiaContainer" unique_id=746820237]
+[node name="Video" type="VideoStreamPlayer" parent="MarginContainer/Jogo/GridContainer/EnunciadoContainer/MidiaContainer" unique_id=746820237]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -92,27 +98,32 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Audio" type="AudioStreamPlayer" parent="MarginContainer/Jogo/EnunciadoAlternativas/EnunciadoContainer/MidiaContainer" unique_id=879580495]
+[node name="Audio" type="AudioStreamPlayer" parent="MarginContainer/Jogo/GridContainer/EnunciadoContainer/MidiaContainer" unique_id=879580495]
 unique_name_in_owner = true
 
-[node name="Alternativas" type="VBoxContainer" parent="MarginContainer/Jogo/EnunciadoAlternativas" unique_id=1495187969]
+[node name="Alternativas" type="GridContainer" parent="MarginContainer/Jogo/GridContainer" unique_id=629126873]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 24
 
-[node name="FeedbackPanel" type="PanelContainer" parent="MarginContainer/Jogo" unique_id=800025278]
+[node name="Rodape" type="VBoxContainer" parent="MarginContainer/Jogo" unique_id=66670293]
+propagate_maximum_size = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"Rodape"
+
+[node name="FeedbackPanel" type="PanelContainer" parent="MarginContainer/Jogo/Rodape" unique_id=800025278]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 128)
 custom_maximum_size = Vector2(-1, 256)
 layout_mode = 2
 
-[node name="FeedbackLabel" type="RichTextLabel" parent="MarginContainer/Jogo/FeedbackPanel" unique_id=120411404]
+[node name="FeedbackLabel" type="RichTextLabel" parent="MarginContainer/Jogo/Rodape/FeedbackPanel" unique_id=120411404]
 layout_mode = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BotaoConfirmar" type="Button" parent="MarginContainer/Jogo" unique_id=1766353192]
+[node name="BotaoConfirmar" type="Button" parent="MarginContainer/Jogo/Rodape" unique_id=1766353192]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(400, 100)
 layout_mode = 2
@@ -120,3 +131,11 @@ size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_type_variation = &"BotaoConfirmar"
 text = "Confirmar"
+
+[node name="SomDeErro" type="AudioStreamPlayer" parent="." unique_id=2122292178]
+unique_name_in_owner = true
+stream = ExtResource("3_tik6b")
+
+[node name="SomDeAcerto" type="AudioStreamPlayer" parent="." unique_id=2880299]
+unique_name_in_owner = true
+stream = ExtResource("4_j106q")

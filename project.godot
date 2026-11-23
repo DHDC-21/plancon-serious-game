@@ -10,10 +10,11 @@ config_version=5
 
 [application]
 
-config/name="PlanconGameQuiz"
+config/name="Missão Plancon"
+config/version="1.0.0"
 run/main_scene="uid://dpy5urktkjcul"
 config/features=PackedStringArray("4.7", "GL Compatibility")
-config/icon="uid://sthvp4x880t1"
+config/icon="uid://bka3il27k2u6w"
 
 [autoload]
 

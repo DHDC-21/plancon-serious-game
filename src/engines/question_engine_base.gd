@@ -3,26 +3,36 @@ class_name QuestionEngineBase
 
 signal answered(correct: bool, points: int)
 
+# VARIÁVEIS PRELOAD
 @onready var texto = %Texto
 @onready var midia_container = %MidiaContainer
 @onready var imagem = %Imagem
 @onready var video = %Video
 @onready var audio = %Audio
 
+@onready var alternativas = %Alternativas # O nó container que vai conter os botões ou checkboxes das alternativas
+@onready var feedback = %FeedbackPanel	# Nó onde será exibido o feedback da resposta (correto/incorreto)
 
-@onready var alternativas = %Alternativas
-@onready var feedback = %FeedbackPanel
+@onready var botao_confirmar: Button = %BotaoConfirmar	# Botão de confirmar resposta e avançar para a próxima pergunta
 
-@onready var botao_confirmar: Button = %BotaoConfirmar
+@onready var som_de_erro = %SomDeErro
+@onready var som_de_acerto = %SomDeAcerto
 
-var pergunta: QuestionModel
-var _confirmar: = false
 
+
+# VARIÁVEIS DE ESTADO
+var pergunta: QuestionModel	# Variavel que armazena a pergunta atual, que será carregada pelo GameController
+var _confirmar: bool = false	# Variavel que indica se o usuario já confirmou a sua resposta, para evitar que ele troque de resposta depois de confirmar
+var _last_correct: bool = false
+
+
+# VARIAVEIS EXPORTAVEIS
 @export_category("Cores")
 @export var cor_correta: Color = Color(0, 1, 0)
 @export var cor_errada: Color = Color(1, 0, 0)
 @export var cor_selecao: Color = Color.YELLOW
 @export var cor_normal: Color = Color(1, 1, 1)
+
 
 
 # Função chamada quando o nó é adicionado à cena
@@ -37,9 +47,12 @@ func _ready() -> void:
 	carregar_pergunta(pergunta)
 
 
+
+# Esta função pode ser sobrescrita nas classes filhas para inicializações específicas
 func _on_ready() -> void:
-	# Esta função pode ser sobrescrita nas classes filhas para inicializações específicas
 	pass
+
+
 
 func gerar_indices_randomizados(quantidade: int) -> Array:
 	var indices = []
@@ -47,6 +60,7 @@ func gerar_indices_randomizados(quantidade: int) -> Array:
 		indices.append(i)
 	indices.shuffle()
 	return indices
+
 
 
 # Função para carregar a pergunta e seus elementos
@@ -86,9 +100,23 @@ func carregar_pergunta(q: QuestionModel) -> void:
 	_construir_as_alternativas()
 
 
-var _last_correct: bool = false
+
+# Função para construir as alternativas de resposta
+func _construir_as_alternativas() -> void:
+	push_error("Implementar a construção das alternativas de resposta na classe filha.")
+	pass
+
+
+
+# Função que checa a resposta do usuário. Se correta ele retorna true e trava as alternativas
+func _checar_resposta() -> bool:
+	push_error("Implementar a checagem da resposta na classe filha.")
+	return false
+
+
 
 func _on_botao_confirmar_pressed() -> void:
+	# Se _confirmar for falso, significa que o usuário ainda não confirmou a resposta, então checamos a resposta.
 	if not _confirmar:
 		var correcao := _checar_resposta()
 
@@ -116,16 +144,4 @@ func _on_botao_confirmar_pressed() -> void:
 	else:
 		# Quando já confirmou e clicou em "Próxima"
 		answered.emit(_last_correct, pergunta.pontuacao_base if _last_correct else 0)
-
 		GameController.carregar_proxima_pergunta()
-
-
-# Função para construir as alternativas de resposta
-func _construir_as_alternativas() -> void:
-	push_error("Implementar a construção das alternativas de resposta na classe filha.")
-	pass
-
-
-func _checar_resposta() -> bool:
-	push_error("Implementar a checagem da resposta na classe filha.")
-	return false
