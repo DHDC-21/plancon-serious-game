@@ -1,6 +1,14 @@
 [gd_scene format=3 uid="uid://cvqfypxvxbxi"]
 
 [ext_resource type="Script" uid="uid://cib0uex7bonvn" path="res://src/ui/placar/placar.gd" id="2_fmykb"]
+[ext_resource type="Texture2D" uid="uid://0l87ddfw6421" path="res://assets/images/placeholder/qr-code-formulario-de-experiência-de-usuário.png" id="2_t3qes"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_raur1"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
 
 [node name="Placar" type="Control" unique_id=2078630280]
 layout_mode = 3
@@ -19,7 +27,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1987823488]
+[node name="Margem" type="MarginContainer" parent="." unique_id=1987823488]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -31,51 +39,112 @@ theme_override_constants/margin_top = 64
 theme_override_constants/margin_right = 256
 theme_override_constants/margin_bottom = 64
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=52790591]
+[node name="ContainerPrincipal" type="VBoxContainer" parent="Margem" unique_id=52790591]
 layout_mode = 2
+theme_override_constants/separation = 36
 
-[node name="Titulo" type="Label" parent="MarginContainer/VBoxContainer" unique_id=309416815]
+[node name="Titulo" type="Label" parent="Margem/ContainerPrincipal" unique_id=309416815]
 layout_mode = 2
-theme_type_variation = &"MainMenuTitle"
-text = "Pabarbéns, você concluiu o teste!"
+theme_type_variation = &"Titulo"
+text = "Parabéns, você concluiu o teste!"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer" unique_id=1872348713]
+[node name="HSeparator" type="HSeparator" parent="Margem/ContainerPrincipal" unique_id=1872348713]
 layout_mode = 2
+theme_override_constants/separation = 36
+theme_override_styles/separator = SubResource("StyleBoxFlat_raur1")
 
-[node name="Control" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=771846475]
+[node name="Principal" type="GridContainer" parent="Margem/ContainerPrincipal" unique_id=1309357123]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_constants/h_separation = 128
+columns = 2
+
+[node name="Acertos" type="VBoxContainer" parent="Margem/ContainerPrincipal/Principal" unique_id=1017234549]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="TituloDesempenho" type="Label" parent="Margem/ContainerPrincipal/Principal/Acertos" unique_id=37789684]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "Seu desempenho:"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="CampoDinamico" type="Label" parent="Margem/ContainerPrincipal/Principal/Acertos" unique_id=1027595760]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "[x / y]"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="TextoAcertos" type="Label" parent="Margem/ContainerPrincipal/Principal/Acertos" unique_id=1392440745]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "questões corretas"
+horizontal_alignment = 1
+
+[node name="Pontuacao" type="HBoxContainer" parent="Margem/ContainerPrincipal/Principal" unique_id=172742943]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Pontuacao" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Control" unique_id=172742943]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Control/Pontuacao" unique_id=1214757299]
+[node name="Label" type="Label" parent="Margem/ContainerPrincipal/Principal/Pontuacao" unique_id=1214757299]
 layout_mode = 2
 text = "Pontuação:"
 
-[node name="Pontuacao" type="Label" parent="MarginContainer/VBoxContainer/Control/Pontuacao" unique_id=500962094]
+[node name="Pontuacao" type="Label" parent="Margem/ContainerPrincipal/Principal/Pontuacao" unique_id=500962094]
 layout_mode = 2
 text = "*implementar*"
 
-[node name="Feedback" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Control" unique_id=1674477623]
+[node name="Feedback" type="HBoxContainer" parent="Margem/ContainerPrincipal/Principal" unique_id=1674477623]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Control/Feedback" unique_id=1376054694]
+[node name="Label" type="Label" parent="Margem/ContainerPrincipal/Principal/Feedback" unique_id=1376054694]
 layout_mode = 2
 text = "Feedback:"
 
-[node name="Feedback" type="Label" parent="MarginContainer/VBoxContainer/Control/Feedback" unique_id=1475729025]
+[node name="Feedback" type="Label" parent="Margem/ContainerPrincipal/Principal/Feedback" unique_id=1475729025]
 layout_mode = 2
 text = "*implementar*"
 
-[node name="BtnVoltar" type="Button" parent="MarginContainer/VBoxContainer" unique_id=349138463]
+[node name="FormularioDeAvaliacao" type="VBoxContainer" parent="Margem/ContainerPrincipal/Principal" unique_id=676944829]
+layout_mode = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="Titulo" type="Label" parent="Margem/ContainerPrincipal/Principal/FormularioDeAvaliacao" unique_id=2086829764]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "Ajude nossa pesquisa! Responda ao form:"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="QRCode" type="TextureRect" parent="Margem/ContainerPrincipal/Principal/FormularioDeAvaliacao" unique_id=1234155478]
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_t3qes")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="LinkButton" type="LinkButton" parent="Margem/ContainerPrincipal/Principal/FormularioDeAvaliacao" unique_id=1254952570]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 46
+text = "[Acessar Formulário]"
+uri = "https://forms.cloud.microsoft/r/fGCSzxnLVJ?origin=lprLink"
+
+[node name="BtnVoltar" type="Button" parent="Margem/ContainerPrincipal" unique_id=349138463]
 layout_mode = 2
 size_flags_vertical = 4
 theme_type_variation = &"MainMenuButton"
 text = "VOLTAR PARA O MENU INICIAL"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/BtnVoltar" to="." method="_on_btn_voltar_pressed"]
+[connection signal="pressed" from="Margem/ContainerPrincipal/BtnVoltar" to="." method="_on_btn_voltar_pressed"]

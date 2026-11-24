@@ -1,5 +1,8 @@
 [gd_scene format=3 uid="uid://dv5kh8x5vxmtv"]
 
+[ext_resource type="Texture2D" uid="uid://qc72oqf6sc6h" path="res://assets/images/Defesa_Civil/marca_sedec.png" id="1_cs624"]
+[ext_resource type="Texture2D" uid="uid://byiype3n87ifo" path="res://assets/images/Univesp/Univesp_logo_png_rgb.png" id="2_70kdh"]
+
 [node name="Creditos" type="Control" unique_id=574497850]
 layout_mode = 3
 anchors_preset = 15
@@ -49,6 +52,22 @@ Profª Dra.Tábata Rejane Bertazzo
 Instituição
 Universidade Virtual do Estado de São Paulo (UNIVESP)
 "
+
+[node name="Logos" type="HFlowContainer" parent="MarginContainer/VBoxContainer" unique_id=323082215]
+visible = false
+custom_minimum_size = Vector2(0, 200)
+propagate_maximum_size = false
+layout_mode = 2
+
+[node name="DefesaCivil" type="TextureRect" parent="MarginContainer/VBoxContainer/Logos" unique_id=408209069]
+layout_mode = 2
+texture = ExtResource("1_cs624")
+expand_mode = 5
+
+[node name="Univesp" type="TextureRect" parent="MarginContainer/VBoxContainer/Logos" unique_id=894659331]
+layout_mode = 2
+texture = ExtResource("2_70kdh")
+expand_mode = 3
 
 [node name="Button" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1150244413]
 custom_minimum_size = Vector2(500, 128)

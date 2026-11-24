@@ -67,24 +67,26 @@ texture = ExtResource("5_48cso")
 expand_mode = 2
 stretch_mode = 3
 
-[node name="Opcoes" type="GridContainer" parent="Margem/VBoxContainer" unique_id=1196506689]
+[node name="Opcoes" type="FlowContainer" parent="Margem/VBoxContainer" unique_id=2125511562]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 6
-theme_override_constants/h_separation = 32
-accessibility_region = true
-columns = 3
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 16
+alignment = 1
+last_wrap_alignment = 2
 
 [node name="BtnCreditos" type="Button" parent="Margem/VBoxContainer/Opcoes" unique_id=516267098]
 custom_minimum_size = Vector2(500, 200)
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_type_variation = &"Botao"
+disabled = true
 text = "Créditos"
 
 [node name="BtnJogar" type="Button" parent="Margem/VBoxContainer/Opcoes" unique_id=1644395719]
 custom_minimum_size = Vector2(500, 200)
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_type_variation = &"BotaoDestaque"
 text = "Jogar
@@ -93,14 +95,15 @@ text = "Jogar
 [node name="BtnOpcoes" type="Button" parent="Margem/VBoxContainer/Opcoes" unique_id=2020328967]
 custom_minimum_size = Vector2(500, 200)
 layout_mode = 2
+size_flags_horizontal = 3
 theme_type_variation = &"Botao"
 disabled = true
 text = "Opções"
 
 [node name="BtnSair" type="Button" parent="Margem/VBoxContainer/Opcoes" unique_id=553306780]
-visible = false
 custom_minimum_size = Vector2(500, 200)
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_type_variation = &"Botao"
 text = "Sair"
@@ -111,6 +114,7 @@ oversampling_override = 1.0
 title = ""
 initial_position = 2
 size = Vector2i(900, 260)
+theme_type_variation = &"PopupSair"
 ok_button_text = "Sim"
 dialog_text = "Você tem certeza que deseja fechar o jogo?
 "
