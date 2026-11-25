@@ -138,9 +138,10 @@ func _on_botao_confirmar_pressed() -> void:
 				alt.set_disabled(true)
 
 			botao_confirmar.text = "Próxima"
+			GameController.acertos += 1
+			print("Acertos: %d" % GameController.acertos)
 			_last_correct = true
 
-			GameController.acertos += 1
 
 		# Se o jogador errar a resposta
 		else:
@@ -148,14 +149,16 @@ func _on_botao_confirmar_pressed() -> void:
 			# Caso o jogador erre, ele pode tentar novamente ate 3 tentativas
 			if tentativas_restantes <= 1:
 				# Exibir a resposta correta
-				feedback.get_node("FeedbackLabel").text = "Resposta correta: " + pergunta.resposta_correta
+				feedback.get_node("FeedbackLabel").text = "Ok, não foi dessa vez mas valeu o esforço! A resposta correta é:"
 
 				# Bloqueia as alternativas
 				_confirmar = true
 				# Muda o botão para "Próxima"
+				botao_confirmar.text = "Pular questão"
 
 			else:
 				tentativas_restantes -= 1	# Diminui o número de tentativas restantes
+				print("Tentativas restantes: %d" % tentativas_restantes)
 
 				_confirmar = false # Permite que o usuário tente de novo
 				feedback.modulate = cor_errada

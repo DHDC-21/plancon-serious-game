@@ -80,6 +80,7 @@ theme_type_variation = &"MidiaContainer"
 
 [node name="Imagem" type="TextureRect" parent="MarginContainer/Jogo/GridContainer/EnunciadoContainer/MidiaContainer" unique_id=712114561]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
