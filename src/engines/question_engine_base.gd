@@ -24,6 +24,7 @@ signal answered(correct: bool, points: int)
 var pergunta: QuestionModel	# Variavel que armazena a pergunta atual, que será carregada pelo GameController
 var _confirmar: bool = false	# Variavel que indica se o usuario já confirmou a sua resposta, para evitar que ele troque de resposta depois de confirmar
 var _last_correct: bool = false
+var tentativas_restantes: int = 3
 
 
 # VARIAVEIS EXPORTAVEIS
@@ -118,14 +119,17 @@ func _checar_resposta() -> bool:
 func _on_botao_confirmar_pressed() -> void:
 	# Se _confirmar for falso, significa que o usuário ainda não confirmou a resposta, então checamos a resposta.
 	if not _confirmar:
+		# A correcao vai ser verdadeira ou falsa desendendo se o usuṕario acertou ou errou a resposta
 		var correcao := _checar_resposta()
 
 		feedback.visible = true
 
+		# Se o jogador acertar a resposta
 		if correcao:
 			# FEEDBACK POSITIVO
 			_confirmar = true # Agora sim, bloqueia a troca de resposta
 			feedback.modulate = cor_correta
+
 			# Aqui você pode acessar o label do feedback para escrever "Correto!"
 			feedback.get_node("FeedbackLabel").text = pergunta.feedback_correto
 
@@ -135,12 +139,28 @@ func _on_botao_confirmar_pressed() -> void:
 
 			botao_confirmar.text = "Próxima"
 			_last_correct = true
+
+			GameController.acertos += 1
+
+		# Se o jogador errar a resposta
 		else:
 			# FEEDBACK NEGATIVO
-			_confirmar = false # Permite que o usuário tente de novo
-			feedback.modulate = cor_errada
-			feedback.get_node("FeedbackLabel").text = pergunta.feedback_incorreto
-			_last_correct = false
+			# Caso o jogador erre, ele pode tentar novamente ate 3 tentativas
+			if tentativas_restantes <= 1:
+				# Exibir a resposta correta
+				feedback.get_node("FeedbackLabel").text = "Resposta correta: " + pergunta.resposta_correta
+
+				# Bloqueia as alternativas
+				_confirmar = true
+				# Muda o botão para "Próxima"
+
+			else:
+				tentativas_restantes -= 1	# Diminui o número de tentativas restantes
+
+				_confirmar = false # Permite que o usuário tente de novo
+				feedback.modulate = cor_errada
+				feedback.get_node("FeedbackLabel").text = pergunta.feedback_incorreto
+				_last_correct = false
 	else:
 		# Quando já confirmou e clicou em "Próxima"
 		answered.emit(_last_correct, pergunta.pontuacao_base if _last_correct else 0)

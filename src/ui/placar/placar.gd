@@ -1,14 +1,20 @@
 extends Control
 
 
-# Called when the node enters the scene tree for the first time.
+
+@onready var qtd_perguntas = GameController.fases.size()
+@onready var acertos = GameController.acertos
+@onready var carregar_acertos = %Acertos.get_node("CampoDinamico")
+
+
 func _ready() -> void:
-	pass # Replace with function body.
+	carregar_acertos.text = "[" + str(acertos) + " / " + str(qtd_perguntas) + "]"
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _process(delta: float) -> void:
 	pass
+
 
 
 func _on_btn_voltar_pressed() -> void:
