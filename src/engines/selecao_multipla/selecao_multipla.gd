@@ -6,8 +6,7 @@ class_name SelecaoMultiplaEngine
 var checkbox: Array[Button] = []
 var indices_respostas_selecionadas: Array[int] = []
 
-
-
+# VARIÁVEIS EXPORTAVEIS
 @export_category("Teste")
 @export var teste: SelecaoMultiplaModel
 
@@ -99,3 +98,12 @@ func _checar_resposta() -> bool:
 			return false
 
 	return true
+
+
+
+
+func _obter_resposta_correta_como_string() -> String:
+	var respostas_corretas: Array[String] = []
+	for indice in pergunta.alternativas_corretas:
+		respostas_corretas.append(pergunta.alternativas[indice])
+	return ", ".join(respostas_corretas)

@@ -68,6 +68,8 @@ func gerar_indices_randomizados(quantidade: int) -> Array:
 func carregar_pergunta(q: QuestionModel) -> void:
 	pergunta = q
 	_confirmar = false
+	_last_correct = false
+	tentativas_restantes = 3
 	texto.text = q.texto
 
 	imagem.visible = false
@@ -116,6 +118,12 @@ func _checar_resposta() -> bool:
 
 
 
+func _obter_resposta_correta_como_string() -> String:
+	push_error("Implementar a obtenção da resposta correta como string na classe filha.")
+	return ""
+
+
+
 func _on_botao_confirmar_pressed() -> void:
 	# Se _confirmar for falso, significa que o usuário ainda não confirmou a resposta, então checamos a resposta.
 	if not _confirmar:
@@ -127,19 +135,23 @@ func _on_botao_confirmar_pressed() -> void:
 		# Se o jogador acertar a resposta
 		if correcao:
 			# FEEDBACK POSITIVO
+			# Indica se o usuário confirmou sua resposte e se "true" entende-se que a resposta não pode ser alterada
 			_confirmar = true # Agora sim, bloqueia a troca de resposta
+
 			feedback.modulate = cor_correta
 
 			# Aqui você pode acessar o label do feedback para escrever "Correto!"
 			feedback.get_node("FeedbackLabel").text = pergunta.feedback_correto
 
-
+			# Percorre todas as alternativas e desabilita elas, para que o usuário não possa mais clicar nelas
 			for alt in alternativas.get_children():
 				alt.set_disabled(true)
 
 			botao_confirmar.text = "Próxima"
 			GameController.acertos += 1
 			print("Acertos: %d" % GameController.acertos)
+
+			# Essa variável é usada para indicar se o usuário acertou ou errou a pergunta, e é emitida no sinal "answered" quando o usuário clica em "Próxima"
 			_last_correct = true
 
 
@@ -148,11 +160,20 @@ func _on_botao_confirmar_pressed() -> void:
 			# FEEDBACK NEGATIVO
 			# Caso o jogador erre, ele pode tentar novamente ate 3 tentativas
 			if tentativas_restantes <= 1:
+				print("Acabou as tentativas! Vamos para a próxima pergunta.")
 				# Exibir a resposta correta
-				feedback.get_node("FeedbackLabel").text = "Ok, não foi dessa vez mas valeu o esforço! A resposta correta é:"
+				feedback.get_node("FeedbackLabel").text = "Ok, não foi dessa vez mas valeu o esforço! A resposta correta é:" + _obter_resposta_correta_como_string()
 
-				# Bloqueia as alternativas
+				# Essa variável é usada para indicar se o usuário acertou ou errou a pergunta, e é emitida no sinal "answered" quando o usuário clica em "Próxima"
+				_last_correct = false
+
+				# Indica se o usuário confirmou sua resposte e se "true" entende-se que a resposta não pode ser alterada
 				_confirmar = true
+
+				# Percorre todas as alternativas e desabilita elas, para que o usuário não possa mais clicar nelas
+				for alt in alternativas.get_children():
+					alt.set_disabled(true)
+
 				# Muda o botão para "Próxima"
 				botao_confirmar.text = "Pular questão"
 

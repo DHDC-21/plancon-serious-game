@@ -1,8 +1,11 @@
 extends Control
 
-@onready var popup_sair = %PopupSair
 
+
+@onready var popup_sair = %PopupSair
 @export var fases: Array[QuestionModel] = []
+
+
 
 func _ready() -> void:
 	if popup_sair != null:
@@ -12,12 +15,27 @@ func _ready() -> void:
 	%Music.play()
 
 
+
+func _on_audio_stream_player_finished() -> void:
+	%Music.play()  # Reinicia a música quando terminar
+
+
+
 func _on_btn_iniciar_pressed() -> void:
 	print("Botão iniciar pressionado! Carregando as fases no GameController...")
 	GameController.start_game(fases)
 
+
+
 func _on_btn_creditos_pressed() -> void:
-	return
+	get_tree().change_scene_to_file("res://src/ui/creditos/creditos.tscn")
+
+
+
+func _on_btn_opcoes_pressed() -> void:
+	get_tree().change_scene_to_file("res://src/ui/opcoes/opcoes.tscn")
+
+
 
 func _on_btn_sair_pressed() -> void:
 	# Abre o popup de confirmação para sair.
@@ -25,13 +43,13 @@ func _on_btn_sair_pressed() -> void:
 		popup_sair.dialog_text = "Você tem certeza que deseja fechar o jogo?"
 		popup_sair.popup_centered()
 
+
+
 func _on_popup_sair_confirmed() -> void:
 	get_tree().quit()
+
+
 
 func _on_popup_sair_cancelled() -> void:
 	if popup_sair != null:
 		popup_sair.hide()
-
-
-func _on_audio_stream_player_finished() -> void:
-	%Music.play()  # Reinicia a música quando terminar

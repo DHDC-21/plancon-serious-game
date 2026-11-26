@@ -1,15 +1,22 @@
 extends QuestionEngineBase
 class_name MultiplaEscolhaEngine
 
+
+
 var botoes: Array[Button] = []
 var indice_resposta_selecionada: int = -1
 
+# VARIÁVEIS EXPORTAVEIS
 @export_category("Teste")
 @export var teste: MultiplaEscolhaModel
+
+
 
 func _on_ready() -> void:
 	if teste:
 		pergunta = teste
+
+
 
 func _construir_as_alternativas() -> void:
 	if pergunta == null or pergunta.alternativas.size() == 0:
@@ -49,6 +56,8 @@ func _construir_as_alternativas() -> void:
 		else:
 			botoes[i].visible = false
 
+
+
 func resposta_do_botao(botao: Button) -> void:
 	if not _confirmar:
 		for b in botoes:
@@ -58,8 +67,15 @@ func resposta_do_botao(botao: Button) -> void:
 
 		indice_resposta_selecionada = botao.get_meta("indice_original")
 
+
+
 func _checar_resposta() -> bool:
 	if indice_resposta_selecionada == -1:
 		return false
 
 	return indice_resposta_selecionada == pergunta.alternativa_correta
+
+
+
+func _obter_resposta_correta_como_string() -> String:
+	return pergunta.alternativas[pergunta.alternativa_correta]
