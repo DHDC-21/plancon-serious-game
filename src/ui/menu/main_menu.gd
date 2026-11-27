@@ -4,10 +4,18 @@ extends Control
 
 @onready var popup_sair = %PopupSair
 @export var fases: Array[QuestionModel] = []
-
+@export var qtde_fases_a_responder: int = 3
 
 
 func _ready() -> void:
+	GameController.qtde_maxima_fases = fases.size()
+	if GameController.qtde_maxima_fases > 0:
+		if GameController.qtde_fases_a_responder <= 0:
+			GameController.qtde_fases_a_responder = qtde_fases_a_responder
+		GameController.qtde_fases_a_responder = clampi(
+			GameController.qtde_fases_a_responder, 1, GameController.qtde_maxima_fases
+		)
+
 	if popup_sair != null:
 		popup_sair.confirmed.connect(_on_popup_sair_confirmed)
 		popup_sair.canceled.connect(_on_popup_sair_cancelled)
@@ -23,7 +31,7 @@ func _on_audio_stream_player_finished() -> void:
 
 func _on_btn_iniciar_pressed() -> void:
 	print("Botão iniciar pressionado! Carregando as fases no GameController...")
-	GameController.start_game(fases)
+	GameController.start_game(fases, GameController.qtde_fases_a_responder)
 
 
 

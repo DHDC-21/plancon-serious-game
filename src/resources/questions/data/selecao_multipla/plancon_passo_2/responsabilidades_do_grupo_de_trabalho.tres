@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="SelecaoMultiplaModel" format=3 uid="uid://bhmpk2awjj7r4"]
+
+[ext_resource type="Script" uid="uid://cm5l2ao6f3571" path="res://src/resources/questions/model/selecao_multipla.gd" id="1_lw3xm"]
+
+[resource]
+script = ExtResource("1_lw3xm")
+alternativas = Array[String](["Elaborar cronogramas", "Convocar reuniões", "Levantar informações sobre riscos", "Coordenar estudos técnicos", "Organizar campeonatos esportivos", "Definir estratégias de resposta"])
+alternativas_corretas = Array[int]([0, 1, 2, 3, 5])
+texto = "Selecione todas as responsabilidades que podem fazer parte das atividades do Grupo de Trabalho (GT)."
+feedback_correto = "Muito bem! Essas são atividades essenciais para o funcionamento do Grupo de Trabalho."
+feedback_incorreto = "Muito bem! Essas são atividades essenciais para o funcionamento do Grupo de Trabalho."
+metadata/_custom_type_script = "uid://cm5l2ao6f3571"

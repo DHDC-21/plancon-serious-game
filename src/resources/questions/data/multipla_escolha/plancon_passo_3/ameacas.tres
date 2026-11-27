@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="MultiplaEscolhaModel" format=3 uid="uid://b7qwr5op5l74e"]
+
+[ext_resource type="Script" uid="uid://4u6p38cre7ym" path="res://src/resources/questions/model/multipla_escolha.gd" id="1_vhtoi"]
+
+[resource]
+script = ExtResource("1_vhtoi")
+alternativas = Array[String](["Recursos disponíveis para resposta", "Fenômenos ou atividades capazes de causar danos", "Pessoas responsáveis pelo atendimento", "Equipamentos utilizados em emergências", "Abrigos temporários"])
+alternativa_correta = 1
+texto = "No contexto da gestão de riscos e desastres, o que são ameaças?"
+metadata/_custom_type_script = "uid://4u6p38cre7ym"

@@ -162,7 +162,7 @@ func _on_botao_confirmar_pressed() -> void:
 			if tentativas_restantes <= 1:
 				print("Acabou as tentativas! Vamos para a próxima pergunta.")
 				# Exibir a resposta correta
-				feedback.get_node("FeedbackLabel").text = "Ok, não foi dessa vez mas valeu o esforço! A resposta correta é:" + _obter_resposta_correta_como_string()
+				feedback.get_node("FeedbackLabel").text = "Ok, não foi dessa vez mas valeu o esforço! A resposta correta é: " + _obter_resposta_correta_como_string()
 
 				# Essa variável é usada para indicar se o usuário acertou ou errou a pergunta, e é emitida no sinal "answered" quando o usuário clica em "Próxima"
 				_last_correct = false

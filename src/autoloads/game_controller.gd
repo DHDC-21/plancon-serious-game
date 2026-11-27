@@ -6,6 +6,9 @@ extends Node
 var index_atual: int = 0
 var fases: Array[QuestionModel] = []
 
+var qtde_maxima_fases: int = 0
+var qtde_fases_a_responder: int = 0
+
 var acertos: int = 0
 
 
@@ -20,11 +23,19 @@ func _process(_delta: float) -> void:
 
 
 
-func start_game(lista_de_fases: Array[QuestionModel]) -> void:
-	print("Iniciando o jogo com ", lista_de_fases.size(), " fases.")
+func start_game(lista_de_fases: Array[QuestionModel], qtde_fases: int) -> void:
+	if lista_de_fases.is_empty():
+		push_error("Não é possível iniciar o jogo sem fases.")
+		return
 
-	fases = lista_de_fases
-	fases.shuffle()  # Embaralha a lista de fases
+	print("Iniciando o jogo com ", qtde_fases_a_responder, " fases.")
+
+	qtde_maxima_fases = lista_de_fases.size()
+	qtde_fases_a_responder = clampi(qtde_fases, 1, qtde_maxima_fases)
+
+	fases = lista_de_fases.duplicate()
+	fases.shuffle()
+	fases.resize(qtde_fases_a_responder)
 	index_atual = 0
 
 	carregar_pergunta_atual()

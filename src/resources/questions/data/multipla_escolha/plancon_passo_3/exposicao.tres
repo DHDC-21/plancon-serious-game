@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="MultiplaEscolhaModel" format=3 uid="uid://bp2p6abh7gmrv"]
+
+[ext_resource type="Script" uid="uid://4u6p38cre7ym" path="res://src/resources/questions/model/multipla_escolha.gd" id="1_i47sq"]
+
+[resource]
+script = ExtResource("1_i47sq")
+alternativas = Array[String](["Equipamentos de resposta", "Pessoas e bens localizados em áreas sujeitas a riscos", "Equipes de emergência", "Recursos financeiros municipais", "Sistemas de comunicação"])
+alternativa_correta = 1
+texto = "O conceito de exposição está relacionado a:"
+feedback_correto = "Correto! Ameaças representam os fenômenos ou atividades com potencial de causar perdas e danos."
+feedback_incorreto = "Ameaças são eventos ou processos que possuem potencial para provocar danos à população, infraestrutura ou meio ambiente."
+metadata/_custom_type_script = "uid://4u6p38cre7ym"

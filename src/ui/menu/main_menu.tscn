@@ -2,13 +2,19 @@
 
 [ext_resource type="Script" uid="uid://bt4ptncwhialj" path="res://src/ui/menu/main_menu.gd" id="1_anfcr"]
 [ext_resource type="Script" uid="uid://b1eqx1ow1urfc" path="res://src/resources/questions/model/_question_model.gd" id="2_tar7q"]
+[ext_resource type="Resource" uid="uid://bjv308eyo8mto" path="res://src/resources/questions/data/multipla_escolha/plancon_passo_1/representantes_do_grupo_de_trabalho.tres" id="3_blstt"]
 [ext_resource type="Resource" uid="uid://ck2onm6ul4x07" path="res://src/resources/questions/data/multipla_escolha/plancon_passo_1/nao_sao_desastres_naturais.tres" id="3_tar7q"]
 [ext_resource type="Resource" uid="uid://c3bewa1f1pf7t" path="res://src/resources/questions/data/selecao_multipla/plancon_passo_1/representantes_do_grupo_de_trabalho.tres" id="4_fioea"]
 [ext_resource type="Texture2D" uid="uid://cepkwx65t31ce" path="res://assets/images/placeholder/1.png" id="5_48cso"]
 [ext_resource type="Resource" uid="uid://c6ots2xbudhcy" path="res://src/resources/questions/data/verdadeiro_ou_falso/plancon_passo_3/vulnerabilidade.tres" id="5_py4bp"]
 [ext_resource type="AudioStream" uid="uid://ddynu4okb4kt1" path="res://assets/audio/background_music/sergequadrado-funky-and-jazzy-gang-loop-251858.mp3" id="5_tar7q"]
 [ext_resource type="Resource" uid="uid://bg6noe8nbnfgj" path="res://src/resources/questions/data/verdadeiro_ou_falso/plancon_passo_2/grupo_de_trabalho.tres" id="6_52atu"]
+[ext_resource type="Resource" uid="uid://c2h1gjrdlhm0n" path="res://src/resources/questions/data/selecao_multipla/plancon_passo_1/cenarios_de_risco_em_mogi_mirm.tres" id="7_4h1g6"]
 [ext_resource type="Resource" uid="uid://rdels2adrdey" path="res://src/resources/questions/data/multipla_escolha/plancon_passo_1/momentos_de_atuacao_da_defesa_civil.tres" id="7_52atu"]
+[ext_resource type="Resource" uid="uid://bhmpk2awjj7r4" path="res://src/resources/questions/data/selecao_multipla/plancon_passo_2/responsabilidades_do_grupo_de_trabalho.tres" id="9_i8xng"]
+[ext_resource type="Resource" uid="uid://b7qwr5op5l74e" path="res://src/resources/questions/data/multipla_escolha/plancon_passo_3/ameacas.tres" id="10_waaxn"]
+[ext_resource type="Resource" uid="uid://bp2p6abh7gmrv" path="res://src/resources/questions/data/multipla_escolha/plancon_passo_3/exposicao.tres" id="11_ddwdr"]
+[ext_resource type="Resource" uid="uid://cbvtd7g72thmo" path="res://src/resources/questions/data/selecao_multipla/plancon_passo_3/capacidade_de_enfrentamento.tres" id="13_mmx4v"]
 
 [node name="Main" type="Control" unique_id=1516892158]
 layout_mode = 3
@@ -22,7 +28,8 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_anfcr")
-fases = Array[ExtResource("2_tar7q")]([ExtResource("3_tar7q"), ExtResource("5_py4bp"), ExtResource("6_52atu"), ExtResource("7_52atu"), ExtResource("4_fioea")])
+fases = Array[ExtResource("2_tar7q")]([ExtResource("3_blstt"), ExtResource("4_fioea"), ExtResource("3_tar7q"), ExtResource("7_52atu"), ExtResource("7_4h1g6"), ExtResource("6_52atu"), ExtResource("9_i8xng"), ExtResource("10_waaxn"), ExtResource("11_ddwdr"), ExtResource("5_py4bp"), ExtResource("13_mmx4v")])
+qtde_fases_a_responder = 5
 
 [node name="Background" type="Panel" parent="." unique_id=660834388]
 layout_mode = 1
@@ -97,7 +104,6 @@ custom_minimum_size = Vector2(500, 200)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"Botao"
-disabled = true
 text = "Opções"
 
 [node name="BtnSair" type="Button" parent="Margem/VBoxContainer/Opcoes" unique_id=553306780]
